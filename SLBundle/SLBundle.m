@@ -10,7 +10,7 @@
 
 @interface SLBundle ()
 
-@property (nonatomic, readonly) NSString *languageCode;
+@property (nonatomic, strong) NSString *languageCode;
 
 @end
 
@@ -30,8 +30,8 @@
 {
     self = [super init];
     if (self) {
-        self.standardLanguageCode = @"en";
-        self.exclusionLanguageCodes = @[];
+        _standardLanguageCode = @"en";
+        _exclusionLanguageCodes = @[];
     }
     return self;
 }
@@ -40,13 +40,34 @@
 
 - (NSString *)languageCode
 {
+    if (_languageCode) {
+        return _languageCode;
+    }
+
+    [self resetLanguageCode];
+    return _languageCode;
+}
+
+- (void)setStandardLanguageCode:(NSString *)standardLanguageCode
+{
+    _standardLanguageCode = standardLanguageCode;
+    [self resetLanguageCode];
+}
+
+- (void)setExclusionLanguageCodes:(NSArray *)exclusionLanguageCodes
+{
+    _exclusionLanguageCodes = exclusionLanguageCodes;
+    [self resetLanguageCode];
+}
+
+- (void)resetLanguageCode
+{
+    _languageCode = self.standardLanguageCode;
     NSString *languageCode = [[NSLocale preferredLanguages] firstObject];
     if ([[[NSBundle mainBundle] localizations] containsObject:languageCode] &&
         ![self.exclusionLanguageCodes containsObject:languageCode]) {
-        return languageCode;
+        _languageCode = languageCode;
     }
-
-    return self.standardLanguageCode;
 }
 
 #pragma mark - public method
