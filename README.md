@@ -5,6 +5,19 @@ SLBundle provides to specify a standard language for iOS.
 
 First or second primary language is English in iOS's localization. If you change primary language, SLBundle can do.
 
+Installation
+----------
+
+There are two ways to use this in your project:
+
+- Copy the ImageLoader class files into your project
+
+- Install with CocoaPods to write Podfile
+```ruby
+platform :ios
+pod 'SLBundle', '~> 0.0.1'
+```
+
 Usage
 ========
 

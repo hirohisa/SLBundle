@@ -5,16 +5,19 @@ Pod::Spec.new do |s|
   s.summary      = "SLBundle provides to specify a standard language"
 
   s.description  = <<-DESC
+SLBundle provides to specify a standard language for iOS.
+
+First or second primary language is English in iOS's localization. If you change primary language, SLBundle can do.
                    DESC
 
-  s.homepage     = "http://github.com/hirohisa/SLBundle"
+  s.homepage     = "https://github.com/hirohisa/SLBundle"
   s.license      =  {
                       :type => "MIT",
                       :file => "LICENSE"
                     }
   s.author       =  { "Hirohisa Kawasaki" => "hirohisa.kawasaki@gmail.com" }
   s.source       =  {
-                      :git => "http://github.com/hirohisa/SLBundle.git",
+                      :git => "https://github.com/hirohisa/SLBundle.git",
                       :tag => "0.0.1"
                     }
 
